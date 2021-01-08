@@ -8,6 +8,7 @@ import (
 	"runtime"
 	"strconv"
 
+	"github.com/mariusvanderwijden/threadpool"
 	"gopkg.in/urfave/cli.v1"
 )
 
@@ -54,7 +55,7 @@ func main() {
 
 func repro(c *cli.Context) error {
 	var (
-		pool     = NewThreadPool(c.GlobalInt(threadFlag.Name))
+		pool     = threadpool.NewThreadPool(c.GlobalInt(threadFlag.Name))
 		testName = c.GlobalString(testFlag.Name)
 		count    = c.GlobalInt(countFlag.Name)
 	)
